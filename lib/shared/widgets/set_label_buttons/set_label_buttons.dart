@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../themes/app_text_styles.dart';
 import '../divider_vertical/divider_vertical_widget.dart';
 import '../label_button/label_button.dart';
 
@@ -9,12 +10,14 @@ class SetLabelButtons extends StatelessWidget {
   final VoidCallback primaryOnPressed;
   final String secondaryLabel;
   final VoidCallback secondaryOnPressed;
+  final bool enablePrimaryColor;
   const SetLabelButtons({
     super.key, 
     required this.primaryLabel, 
     required this.primaryOnPressed, 
     required this.secondaryLabel, 
-    required this.secondaryOnPressed
+    required this.secondaryOnPressed,
+    this.enablePrimaryColor = false,
   });
 
   @override
@@ -26,7 +29,8 @@ class SetLabelButtons extends StatelessWidget {
           Expanded(
             child: LabelButton(
               label: primaryLabel,
-              onPressed: primaryOnPressed
+              onPressed: primaryOnPressed,
+              style: enablePrimaryColor ? TextStyles.buttonPrimary : null
             )
           ),
           const DividerVerticalWidget(),
